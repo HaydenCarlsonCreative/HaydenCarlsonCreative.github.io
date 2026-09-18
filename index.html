@@ -142,10 +142,18 @@
     align-items: end;
   }
   .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 0.95rem;
     color: var(--accent);
     font-weight: 500;
     margin: 0 0 18px;
+  }
+  .hero-kicker svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
   }
   .hero h1 {
     font-family: var(--font-display);
@@ -440,8 +448,11 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="hero-kicker">Minneapolis, MN</p>
-        <h1>Graphic design and content strategy for organizations with something worth <em>explaining well</em>.</h1>
+        <p class="hero-kicker">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Minneapolis, MN
+        </p>
+        <h1>Graphic and UX design for organizations with something worth <em>explaining well</em>.</h1>
       </div>
       <div class="hero-side">
         <p>I'm a content strategist and graphic designer at Aeon, where I lead print, web, and brand design for a mission-driven organization.</p>
