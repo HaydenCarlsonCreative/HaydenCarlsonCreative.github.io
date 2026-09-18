@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hayden Carlson — Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,400;0,8..30,500;0,8..30,600;1,8..30,400;1,8..30,500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f6f2;
+    --paper-raised: #ffffff;
+    --ink: #1c1b17;
+    --ink-soft: #5a5850;
+    --line: #d9d5c9;
+    --accent: #33507a;
+    --accent-soft: #33507a1a;
+    --brick: #a03a2e;
+    --focus: #33507a;
+
+    --font-display: 'Piazzolla', Georgia, 'Times New Roman', serif;
+    --font-body: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --max: 1180px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #17181a;
+      --paper-raised: #1f2023;
+      --ink: #ece9e1;
+      --ink-soft: #a9a69c;
+      --line: #35363a;
+      --accent: #7f9fce;
+      --accent-soft: #7f9fce22;
+      --brick: #d17564;
+      --focus: #7f9fce;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #17181a;
+    --paper-raised: #1f2023;
+    --ink: #ece9e1;
+    --ink-soft: #a9a69c;
+    --line: #35363a;
+    --accent: #7f9fce;
+    --accent-soft: #7f9fce22;
+    --brick: #d17564;
+    --focus: #7f9fce;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  img, svg { max-width: 100%; }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .nav-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .nav-links a:hover { color: var(--ink); border-color: var(--accent); }
+  .nav-toggle { display: none; }
+
+  @media (max-width: 640px) {
+    .nav-links { gap: 18px; }
+    .nav-links a { font-size: 0.85rem; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 108px 0 88px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+    align-items: end;
+  }
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0 0 18px;
+  }
+  .hero-kicker svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 5.4vw, 4.1rem);
+    line-height: 1.06;
+    margin: 0;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(14px);
+    animation: rise 0.7s ease-out 0.05s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-side {
+    padding-bottom: 6px;
+  }
+  .hero-side p {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    margin: 0 0 22px;
+    max-width: 38ch;
+  }
+  .hero-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-links a {
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    width: fit-content;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color 0.15s ease;
+  }
+  .hero-links a:hover { border-color: var(--accent); }
+
+  @media (max-width: 800px) {
+    .hero { padding: 72px 0 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: 88px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 52px;
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    margin: 0;
+  }
+  .section-head .note {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    max-width: 30ch;
+    text-align: right;
+  }
+  @media (max-width: 640px) {
+    .section-head { flex-direction: column; gap: 8px; }
+    .section-head .note { text-align: left; }
+  }
+
+  /* ---------- Case studies ---------- */
+  .case {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 44px 0;
+  }
+  .case:not(:last-child) { border-bottom: 1px solid var(--line); }
+  .case:nth-child(even) .case-media { order: 2; }
+  .case:nth-child(even) .case-text { order: 1; }
+
+  .case-media {
+    aspect-ratio: 4 / 3;
+    border-radius: 3px;
+    border: 1px dashed var(--line);
+    background-color: var(--paper-raised);
+    background-image:
+      linear-gradient(var(--accent-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--accent-soft) 1px, transparent 1px);
+    background-size: 24px 24px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    transition: transform 0.35s cubic-bezier(.2,.7,.3,1);
+  }
+  .case-media:hover { transform: scale(1.015); }
+  a.case-media { cursor: pointer; }
+  .case-media .ph-label {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    max-width: calc(100% - 32px);
+  }
+  .case-media .live-tag {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--paper) 85%, transparent);
+    padding: 5px 10px;
+    border: 1px solid var(--accent-soft);
+    border-radius: 2px;
+  }
+
+  .case-eyebrow {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .case h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.55rem;
+    margin: 0 0 14px;
+  }
+  .case p.desc {
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    max-width: 46ch;
+  }
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .case-tags span {
+    font-size: 0.78rem;
+    color: var(--accent);
+    border: 1px solid var(--accent-soft);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 820px) {
+    .case, .case:nth-child(even) .case-media, .case:nth-child(even) .case-text {
+      order: initial;
+      grid-template-columns: 1fr;
+    }
+    .case { grid-template-columns: 1fr; gap: 22px; }
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  .about-grid p { color: var(--ink-soft); max-width: 52ch; }
+  .about-grid p.lead {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .tool-list {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+  .tool-list li {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+  }
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ---------- Resume ---------- */
+  .resume-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    padding: 32px 36px;
+    border-radius: 3px;
+  }
+  .resume-box p { margin: 0; color: var(--ink-soft); max-width: 44ch; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 12px 22px;
+    border-radius: 2px;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { opacity: 0.88; }
+
+  /* ---------- Contact ---------- */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .contact-inner h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin: 0 0 14px;
+    max-width: 16ch;
+  }
+  .contact-inner .big-link {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    display: inline-block;
+    padding-bottom: 4px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-inner .big-link:hover { color: var(--accent); border-color: var(--accent); }
+  .contact-meta { color: var(--ink-soft); font-size: 0.92rem; margin-top: 22px; }
+  .contact-meta div { margin-bottom: 6px; }
+  @media (max-width: 720px) {
+    .contact-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a class="nav-name" href="#top">Hayden Carlson</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="hero-kicker">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Minneapolis, MN
+        </p>
+        <h1>Graphic and UX design for organizations with something worth <em>explaining well</em>.</h1>
+      </div>
+      <div class="hero-side">
+        <p>I'm a content strategist and graphic designer at Aeon, where I lead print, web, and brand design for a mission-driven organization.</p>
+        <div class="hero-links">
+          <a href="#work">View selected work ↓</a>
+          <a href="#resume">Download resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <p class="note">Publication, brand, and web design for Aeon, plus earlier work in marketing and video.</p>
+      </div>
+
+      <div class="case">
+        <a class="case-media" href="https://aeon.org/wp-content/uploads/2026/08/2025-Impact-Report.pdf" target="_blank" rel="noopener">
+          <span class="ph-label">Add image — Aeon 2025 Impact Report spreads</span>
+          <span class="live-tag">View PDF ↗</span>
+        </a>
+        <div class="case-text">
+          <p class="case-eyebrow">Publication design</p>
+          <h3>Aeon 2025 Impact Report</h3>
+          <p class="desc">Editorial layout and data visualization for Aeon's annual report, translating a year of program data and donor impact into a publication people would actually want to read.</p>
+          <div class="case-tags"><span>InDesign</span><span>Editorial layout</span><span>Data viz</span></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <a class="case-media" href="https://aeon.org/donate/" target="_blank" rel="noopener">
+          <span class="ph-label">Add image — aeon.org/donate</span>
+          <span class="live-tag">View live ↗</span>
+        </a>
+        <div class="case-text">
+          <p class="case-eyebrow">Web design</p>
+          <h3>aeon.org/donate</h3>
+          <p class="desc">A redesign of Aeon's donation page, reframing forty years of organizational history as an interactive timeline that leads into the ask, alongside video testimonials and a clear breakdown of ways to give beyond a one-time gift.</p>
+          <div class="case-tags"><span>WordPress</span><span>UX</span><span>Interactive timeline</span></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <a class="case-media" href="https://aeon.org/partner-with-us/" target="_blank" rel="noopener">
+          <span class="ph-label">Add image — aeon.org/partner-with-us</span>
+          <span class="live-tag">View live ↗</span>
+        </a>
+        <div class="case-text">
+          <p class="case-eyebrow">Web design</p>
+          <h3>aeon.org/partner-with-us</h3>
+          <p class="desc">A corporate sponsorship page organizing Aeon's partnership options into financial, in-kind, and volunteer tracks, with clear sponsorship tiers and a full wall recognizing current partners.</p>
+          <div class="case-tags"><span>WordPress</span><span>UX</span><span>Brand</span></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-media">
+          <span class="ph-label">Add image — Beyond Bricks &amp; Mortar campaign materials</span>
+        </div>
+        <div class="case-text">
+          <p class="case-eyebrow">Campaign</p>
+          <h3>Beyond Bricks &amp; Mortar</h3>
+          <p class="desc">Aeon's largest campaign to date, launched in May. I built the visual system and produced the print, digital, and social materials that carried it across channels.</p>
+          <div class="case-tags"><span>Illustrator</span><span>Campaign system</span><span>Social</span></div>
+        </div>
+      </div>
+
+      <div class="case">
+        <div class="case-media">
+          <span class="ph-label">Add image — additional print, social, and email work</span>
+        </div>
+        <div class="case-text">
+          <p class="case-eyebrow">Ongoing</p>
+          <h3>Print, social, and email</h3>
+          <p class="desc">The daily work behind the campaigns: donor and general-audience emails, social content, print collateral, and the occasional staff headshot.</p>
+          <div class="case-tags"><span>Mailchimp</span><span>FormAssembly</span><span>Photography</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p class="lead">I care about making mission-driven work look as considered as the mission itself.</p>
+          <p>At Aeon, a Minneapolis-based nonprofit, I work across print and digital: annual reports, campaigns, the website, social, and email, all under one visual system I'm responsible for keeping consistent.</p>
+        </div>
+        <div>
+          <p>Day to day, I'm in the full Adobe suite, mostly InDesign and Illustrator, alongside WordPress, Mailchimp, and FormAssembly.</p>
+          <ul class="tool-list">
+            <li>InDesign</li>
+            <li>Illustrator</li>
+            <li>WordPress</li>
+            <li>Mailchimp</li>
+            <li>FormAssembly</li>
+            <li>Photoshop</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Resume</h2>
+      </div>
+      <div class="resume-box">
+        <p>A traditional, ATS-friendly resume covering my design and content strategy experience at Aeon and before.</p>
+        <a class="btn" href="resume.pdf" download>Download PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <h2>Let's talk about a graphic design role.</h2>
+        <a class="big-link" href="mailto:hello@haydencarlson.com">hello@haydencarlson.com</a>
+        <div class="contact-meta">
+          <div>Minneapolis, MN</div>
+          <div>Open to Senior Graphic Designer / Design Lead roles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Hayden Carlson</span>
+    <span>Graphic design &amp; content strategy</span>
+  </div>
+</footer>
+
+</body>
+</html>
